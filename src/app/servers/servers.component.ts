@@ -6,11 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
+
+
+  showSecret = false;
+  log = [];
   username = '';
+
+
   allowNewServer = false;
   serverCreationStatus = "No server was created";
   serverName = 'TestServer';
   serverCreated = false;
+  servers  = ['TestServer', 'TestServer 2']
 
   constructor() { 
     setTimeout( ()=> {
@@ -23,13 +30,17 @@ export class ServersComponent implements OnInit {
 
   onCreateServer() {
     this.serverCreated = true;
+    this.servers.push(this.serverName)
     this.serverCreationStatus = 'Server was created! Name is' + this.serverName;
-
   }
 
   onUpdateServerName(event: Event) {
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
 
+  onToggleDetails() {
+    this.showSecret = !this.showSecret;
+    this.log.push(new Date())
   }
 
 }
