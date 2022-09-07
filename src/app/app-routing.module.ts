@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RecipesComponent} from './recipes/recipes.component';
-import { ShoppingListComponent} from './shopping-list/shopping-list.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { AuthGuard } from './shared/guard/auth.guard';
 
 
 const routes: Routes = [
- { path: '', redirectTo: '/recipes', pathMatch: 'full'},
- { path: 'recipes', component: RecipesComponent },
- { path: 'shopping-list', component: ShoppingListComponent },
+ { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
+//  { path: 'recipes', component: RecipesComponent,  canActivate: [AuthGuard] },
+//  { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard]},
+ { path: 'sign-in', component: SignInComponent },
+ { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
 ];
 
